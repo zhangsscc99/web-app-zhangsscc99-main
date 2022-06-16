@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<h2>Search Result</h2>
+
+<p>This page shows your search result.
+        
+    {% for doc in docs %}
+    <div>
+        <hr class="solid">
+        
+        <p>sender:{{doc.name}}</p>
+        <p>message:{{doc.message}}</p>
+        <p>hobby:{{doc.hobby}}
+    
+        </p>
+        <p>receiver:{{doc.receiver}}</p>
+        
+        
+        
+        
+            
+    </div>
+    {%endfor%}
+</p>
+
+{% endblock %}

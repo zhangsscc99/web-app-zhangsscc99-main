@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<h2>Read</h2>
+<form method="POST" action="{{ url_for('readone') }}">
+    <p>sender: <input type="text" id="fsname" name="fsname" /><br /></p>
+<p><input type="submit" name="post-btn" value="Search" />(click this button, and you can search for the information that you would like to check)</p>
+</form>
+<p>This page shows information pulled from a MongoDB database collection.
+        
+    {% for doc in docs %}
+    <div>
+        <hr class="solid">
+        <p class="post">
+            Posted by {{doc.name}} at {{ doc.created_at.strftime("%H:%M on %d %B %Y") }}
+            </br>
+            <a href="{{ url_for('edit',mongoid=doc._id)}}">Edit</a> | <a href="{{ url_for('delete',mongoid=doc._id)}}">Delete</a>
+            </br>
+        </p>
+        <p>sender:{{doc.name}}</p>
+        
+        
+        <p>
+            
+            message:{{doc.message}}
+        </p>
+        <p>
+            hobby:{{doc.hobby}}
+        </p>
+        <p>receiver:{{doc.receiver}}</p>
+            
+    </div>
+    {%endfor%}
+</p>
+{% endblock %}
